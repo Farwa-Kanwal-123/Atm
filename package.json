@@ -1,0 +1,19 @@
+{
+  "name": "f1k2w3z4-cli-atm",
+  "version": "2.1.1",
+  "description": "A cli based atm that can be exactly perform same task like an atm machine.",
+  "main": "index.js",
+  "type": "module",
+  "bin": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "farwa-kanwal",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.2.16"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7"
+  }
+}
