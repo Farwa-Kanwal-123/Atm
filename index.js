@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+console.log("Welcome To Farwa ATM Machine!");
 import inquirer from "inquirer";
 let myBalance = 20000;
 let myPin = 67890;
@@ -14,11 +15,26 @@ if (answer.pin === myPin) {
         {
             name: "operation",
             type: "list",
-            choices: ["withdraw", "checkBalance"],
+            choices: ["withDraw", "fastCash", "checkBalance"],
             message: "select operation",
         },
     ]);
-    if (operations.operation === "withdraw") {
+    if (operations.operation === "withDraw") {
+        let withDrawlMoney = await inquirer.prompt({
+            name: "money",
+            type: "input",
+            message: "Enter amount you have to withdrawl:"
+        });
+        if (withDrawlMoney.money <= myBalance) {
+            console.log(`you have successfully withdrwal ${withDrawlMoney.money} rupees.`);
+            let remainingBalance = (myBalance -= withDrawlMoney.money);
+            console.log(`your remaining balance is ${remainingBalance}.`);
+        }
+        else {
+            console.log("you have insufficient balance.");
+        }
+    }
+    else if (operations.operation === "fastCash") {
         let selection = await inquirer.prompt([
             {
                 name: "amount",
@@ -27,12 +43,13 @@ if (answer.pin === myPin) {
                 message: "select amount",
             },
         ]);
-        if (selection.amount > myBalance) {
-            console.log("Insufficient balanace");
+        if (selection.amount <= myBalance) {
+            let remainingBalance = (myBalance -= selection.amount);
+            console.log(`you have successfully withdrwal ${selection.amount} rupees.`);
+            console.log(`your remaining balance is ${remainingBalance}.`);
         }
         else {
-            let remainingBalance = (myBalance -= selection.amount);
-            console.log(`your remaining balance is ${remainingBalance}.`);
+            console.log("Insufficient balanace");
         }
     }
     else if (operations.operation === "checkBalance") {
