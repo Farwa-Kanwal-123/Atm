@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-console.log("\n\tWelcome To Farwa ATM Machine!\t\n");
+console.log("\n\t 'Welcome To Farwa ATM Machine!' \t\n");
 
 import inquirer from "inquirer";
 
